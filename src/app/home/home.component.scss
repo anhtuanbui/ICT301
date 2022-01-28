@@ -1,0 +1,393 @@
+@import "../shared/colors.scss";
+@import "../shared/functions.scss";
+@import "../shared/variables.scss";
+@import "node_modules/keen-slider/keen-slider.scss";
+
+$slide-show-height: 600px;
+
+.swiper {
+  width: 100%;
+  height: $slide-show-height;
+  min-height: auto;
+
+  img {
+    width: 100%;
+    height: $slide-show-height;
+    object-fit: cover;
+  }
+}
+
+.swiper-item {
+  position: relative;
+}
+
+.slideshow-box {
+  position: absolute;
+  width: 100%;
+  bottom: 20%;
+
+  h1 {
+    font-size: 48px;
+  }
+}
+
+.slideshow-textbox {
+  margin-top: 20%;
+  color: white;
+
+  a {
+    background-color: $orange-tint;
+    padding: 13px 20px;
+    // border-radius: 5px;
+    margin-right: 10px;
+    font-weight: 700;
+    box-sizing: border-box;
+    border: 0;
+
+    position: relative;
+    vertical-align: middle;
+
+    &::before,
+    &::after {
+      box-sizing: inherit;
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      // border-radius: 5px;
+    }
+  }
+
+  .draw {
+    transition: color 0.25s;
+
+    &::before,
+    &::after {
+      // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
+      border: 2px solid transparent;
+      width: 0;
+      height: 0;
+    }
+
+    // This covers the top & right borders (expands right, then down)
+    &::before {
+      top: 0;
+      left: 0;
+    }
+
+    // And this the bottom & left borders (expands left, then up)
+    &::after {
+      bottom: 0;
+      right: 0;
+    }
+
+    &:hover {
+      color: $cyan;
+    }
+
+    // Hover styles
+    &:hover::before,
+    &:hover::after {
+      width: 100%;
+      height: 100%;
+    }
+
+    &:hover::before {
+      transition: width 0.25s ease-out,
+        // Width expands first
+        height 0.25s ease-out 0.25s; // And then height
+    }
+
+    &:hover::after {
+      transition: border-color 0s ease-out 0.5s,
+        // Wait for ::before to finish before showing border
+        width 0.25s ease-out 0.5s,
+        // And then exanding width
+        height 0.25s ease-out 0.75s; // And finally height
+    }
+  }
+
+  // Inherits from .draw
+  .meet {
+    &:hover {
+      color: $black;
+    }
+
+    // Start ::after in same position as ::before
+    &::after {
+      top: 0;
+      left: 0;
+    }
+
+    // Change colors
+    &:hover::before {
+      border-top-color: $black;
+      border-right-color: $black;
+    }
+
+    &:hover::after {
+      border-bottom-color: $black;
+      border-left-color: $black;
+      transition: // Animate height first, then width
+        height 0.25s ease-out, width 0.25s ease-out 0.25s;
+    }
+  }
+
+  ::ng-deep {
+    .btn-call-us {
+      color: white;
+      background-color: rgba(107, 107, 107, 0.5);
+
+      &:hover {
+        background-color: rgba(48, 48, 48, 0.7);
+      }
+    }
+  }
+}
+
+.welcome-video-wrap {
+  width: calc(50% - 10px);
+  margin-right: 10px;
+}
+
+.welcome-video {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.section-info {
+  margin-left: 10px;
+  width: calc(50% - 10px);
+
+  h3 {
+    margin-top: 0;
+  }
+}
+
+.section-container {
+  display: flex;
+  padding: 80px 0;
+}
+
+.scroll-horizontal-box {
+  position: relative;
+}
+
+.scroll-box-controller {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.scroll-box-content {
+  display: inline-flex;
+  gap: 20px;
+  overflow: hidden;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.scroll-box-card {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  width: 420px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .scroll-box-card-textbox {
+    bottom: 0;
+    display: flex;
+    flex-flow: wrap;
+    height: 3.8rem;
+    width: 100%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    color: white;
+
+    transition: height 0.8s ease-in-out, background-color 1s ease-in-out;
+
+    button {
+      opacity: 0;
+      font-size: 0.8rem;
+      padding: 3px 20px;
+      font-weight: 400;
+      transition: background-color 0.25s ease-in-out, opacity 0.8s ease-in-out;
+
+      &:hover {
+        background-color: $orange-tint-tinted;
+      }
+    }
+
+    p {
+      margin: 0;
+      text-align: center;
+      padding: 10px;
+      width: 100%;
+    }
+  }
+  &:hover {
+    .scroll-box-card-textbox {
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+
+      button {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.navigation-wrapper {
+  position: relative;
+
+  &:hover {
+    .arrow {
+      opacity: 1;
+    }
+  }
+}
+
+.arrow {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  fill: #fff;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.arrow--left {
+  left: 5px;
+}
+
+.arrow--right {
+  left: auto;
+  right: 5px;
+}
+
+.arrow--disabled {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.about {
+  margin: 80px 0;
+
+  p {
+    text-align: center;
+    width: 400px;
+  }
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
+
+  img {
+    margin: auto;
+    margin-bottom: 20px;
+  }
+}
+
+.contact {
+  background-color: $blue;
+}
+
+.contact-container {
+  display: grid;
+  padding: 20px 0;
+
+  h1 {
+    justify-self: center;
+  }
+}
+
+.contact-form {
+  display: grid;
+  justify-items: center;
+
+  .contact-form-field {
+    width: 60%;
+    display: inline-flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    align-items: flex-start;
+  }
+
+  label {
+    width: 45%;
+    display: block;
+  }
+
+  input {
+    width: 50%;
+    height: 1.5rem;
+    border-radius: 5px;
+    border: 1px solid rgb(136, 136, 136);
+  }
+
+  textarea {
+    width: 50%;
+    height: 4rem;
+    border-radius: 5px;
+    border: 1px solid rgb(136, 136, 136);
+    resize: none;
+  }
+}
+
+.button-form-div {
+  display: grid;
+  height: 100%;
+
+  .form-label {
+    width: 100%;
+  }
+
+  button {
+    align-self: flex-end;
+    background-color: $orange-tint;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    font-family: $font-family;
+    font-size: 16px;
+  }
+}
+
+:host ::ng-deep {
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: $slideshow-bullet-active-color;
+  }
+
+  .swiper-pagination-bullet {
+    opacity: 0.5;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: $slideshow-bullet-active-color;
+  }
+}

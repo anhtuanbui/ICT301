@@ -1,0 +1,170 @@
+<div class="slideshow">
+  <swiper
+    id="swiper"
+    [loop]="true"
+    [autoHeight]="true"
+    [allowTouchMove]="true"
+    [autoplay]="{
+      delay: 6000,
+      disableOnInteraction: false
+    }"
+    [pagination]="{ clickable: true }"
+    [navigation]="true"
+    [scrollbar]="{ draggable: true }"
+    [lazy]="true"
+  >
+    <ng-template class="swiper-item" swiperSlide>
+      <img src="/assets/images/slideshow1.jpg" alt="children" />
+      <div class="slideshow-box">
+        <div class="container slideshow-textbox">
+          <h1>Welcome</h1>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template class="swiper-item" swiperSlide>
+      <img src="\assets\images\slideshow2.jpg" alt="children" />
+      <div class="slideshow-box">
+        <div class="container slideshow-textbox">
+          <h1>Your life, your way</h1>
+          <h2>Need help?</h2>
+          <div class="slideshow-textbox-action">
+            <a class="draw meet" href="#contact">Contact us</a>
+            <bnv-call-btn></bnv-call-btn>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template swiperSlide>
+      <img src="\assets\images\slideshow3.jpg" alt="children"
+    /></ng-template>
+  </swiper>
+</div>
+
+<div class="welcome container">
+  <div class="section-container">
+    <div class="welcome-video-wrap">
+      <div class="welcome-video">
+        <iframe
+          class="welcome-video-iframe"
+          src="https://www.youtube.com/embed/3O35mTKjhjo?controls=0"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+
+    <div class="section-info">
+      <h1>Welcome to Benevolent Society</h1>
+      <p>This website is designed specifically for you!</p>
+
+      <p>
+        We hope this website makes you feel confident, empowered and ready to
+        start your journey with the Benevolent Society.
+      </p>
+      <p>This website shows you what to expect when we are working with you.</p>
+      <p>
+        If you ever feel that you are not getting the service that you deserve,
+        it is important that you let us know by <strong>calling us</strong>, using the <strong>form
+        below</strong>, or telling a <strong>worker</strong>.
+      </p>
+      <p>Have a look around and if you have any questions, let us know.</p>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="navigation-wrapper">
+    <div class="keen-slider keen-slider--vertical" #sliderRef>
+      <div
+        class="keen-slider__slide scroll-box-card"
+        *ngFor="let card of cards; index as i"
+      >
+        <img src="/assets/images/grid-card{{ i }}.jpg" alt="children" />
+        <div class="scroll-box-card-textbox bg-color{{ i }}">
+          <p>{{ card }}</p>
+          <button mat-button>read more</button>
+        </div>
+      </div>
+    </div>
+
+    <svg
+      *ngIf="slider"
+      [ngClass]="
+        'arrow arrow--left ' + (currentSlide === 0 ? 'arrow--disabled' : '')
+      "
+      (click)="slider.prev()"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z"
+      />
+    </svg>
+    <svg
+      *ngIf="slider"
+      [ngClass]="
+        'arrow arrow--right ' +
+        (slider.track.details.slides.length - 1 === currentSlide
+          ? 'arrow--disabled'
+          : '')
+      "
+      (click)="slider.next()"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <path d="M5 3l3.057-3 11.943 12-11.943 12-3.057-3 9-9z" />
+    </svg>
+  </div>
+</div>
+
+<div class="about">
+  <div class="container about-container">
+    <img src="\assets\images\image12.png" alt="" />
+    <p>
+      The Benevolent Society acknowledges the Traditional Owners of Country
+      throughout Australia and recognises Aboriginal & Torres Strait Islander
+      continuing connection to land, waters and community.
+    </p>
+    <p>We pay our respects to Elders both past and present.</p>
+  </div>
+</div>
+
+<div id="contact" class="contact">
+  <div class="container contact-container">
+    <h1>We want to hear from you</h1>
+
+    <form class="contact-form" action="">
+      <div class="contact-form-field">
+        <label class="form-label" for="">Full name</label>
+        <input type="text" name="FullName" />
+      </div>
+      <div class="contact-form-field">
+        <label class="form-label" for="">Phone number</label>
+        <input type="text" name="PhoneNumber" />
+      </div>
+      <div class="contact-form-field">
+        <label class="form-label" for="">Your email</label>
+        <input type="text" name="Email" />
+      </div>
+      <div class="contact-form-field">
+        <label class="form-label" for="">Suburb where you live</label>
+        <input type="text" name="Suburb" />
+      </div>
+      <div class="contact-form-field">
+        <label class="form-label" for="">When can we give you a call?</label>
+        <input type="text" name="Time" />
+      </div>
+      <div class="contact-form-field">
+        <div class="button-form-div">
+          <label class="form-label" for="">Your message</label>
+          <button mat-button>Submit</button>
+        </div>
+        <textarea type="text" name="Message"></textarea>
+      </div>
+    </form>
+  </div>
+</div>

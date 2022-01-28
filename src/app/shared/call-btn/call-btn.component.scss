@@ -1,0 +1,19 @@
+@import '../functions.scss';
+@import '../colors.scss';
+
+.btn-call-us {
+    box-sizing: border-box;
+    display: inline-block;
+    text-decoration: none;
+    color: $page-font-color;
+    font-weight: 700;
+    background-color: $orange-tint;
+    border-radius: 5px;
+    padding: 15px 20px;
+    transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out;
+
+    &:hover {
+      color: $orange-tint;
+      background-color: rgb(56, 56, 56);
+    }
+  }

@@ -1,0 +1,83 @@
+@import "../colors.scss";
+
+ul {
+  padding-right: 20px;
+}
+
+li {
+  display: inline-block;
+  position: relative;
+
+  a {
+    display: block;
+    padding: 15px 35px;
+    z-index: 100;
+  }
+
+  .nav-item-background {
+    height: 6px;
+    width: 100%;
+    position: absolute;
+    transition: height 0.25s ease-in-out;
+    z-index: -100;
+  }
+
+  &:hover {
+    .nav-item-background {
+      height: 100%;
+    }
+  }
+}
+
+.header {
+    border-bottom: 1px solid $border-bottom-color;
+}
+
+.header-wrap {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 40px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.link-active-white {
+  color: white;
+}
+
+// Be careful here to put active link live
+.bg-full {
+  height: 100% !important;
+}
+
+.bg-green {
+  background-color: $green;
+}
+
+.bg-blue {
+  background-color: $blue;
+}
+
+.bg-red {
+  background-color: $red;
+}
+
+.bg-pink {
+  background-color: $pink;
+}
+
+.bg-orange {
+  background-color: $orange;
+}
+
+.bg-cyan {
+  background-color: $cyan;
+}

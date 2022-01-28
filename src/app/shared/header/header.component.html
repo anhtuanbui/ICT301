@@ -1,0 +1,36 @@
+<div class="header">
+  <div class="header-wrap container">
+    <a href="\"><img class="logo" src="\assets\images\LogoFull.png" /></a>
+    <div class="navigation">
+      <ul>
+        <li>
+          <div
+            class="nav-item-background bg-green"
+            [routerLink]="['']"
+            routerLinkActive="bg-full"
+          ></div>
+          <a [routerLink]="['']" routerLinkActive="link-active-white">Home</a>
+        </li>
+        <li>
+          <div class="nav-item-background bg-orange"></div>
+          <a href="#">Services</a>
+        </li>
+        <li>
+          <div class="nav-item-background bg-pink"></div>
+          <a target="_blank" href="https://www.benevolent.org.au/about-us"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <div class="nav-item-background bg-blue"></div>
+          <a
+            target="_blank"
+            href="https://www.benevolent.org.au/contact-us/general-enquiries"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+      <bnv-call-btn></bnv-call-btn>
+    </div>
+  </div>
+</div>

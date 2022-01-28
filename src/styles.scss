@@ -1,1 +1,103 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Client-primary: mat.define-palette(mat.$indigo-palette);
+$Client-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$Client-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$Client-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $Client-primary,
+      accent: $Client-accent,
+      warn: $Client-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($Client-theme);
+
 /* You can add global styles to this file, and also import other style files */
+@import "./app/shared/colors.scss";
+@import "./app/shared/functions.scss";
+
+@import "~swiper/scss";
+@import "~swiper/scss/navigation";
+@import "~swiper/scss/pagination";
+
+@font-face {
+  font-family: "VAG Rounded";
+  src: local("VAG Rounded"), url(./assets/fonts/VAGRoundedRegular.ttf) format("truetype");
+}
+
+html,
+body {
+  height: 100%;
+  font-size: 20px !important;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+body, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-family: "VAG Rounded", Calibri, "Helvetica Neue", sans-serif !important;
+}
+ul,
+li,
+a {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+p {
+  line-height: 1.3rem;
+}
+
+.container {
+  width: 1300px;
+  max-width: 100%;
+  margin: auto;
+}
+
+.bg-color0 {
+  background-color: $blue;
+}
+.bg-color1 {
+  background-color: $pink;
+}
+.bg-color2 {
+  background-color: $orange;
+}
+.bg-color3 {
+  background-color: $green;
+}
+.bg-color4 {
+  background-color: $red;
+}
+.bg-color5 {
+  background-color: $cyan;
+}

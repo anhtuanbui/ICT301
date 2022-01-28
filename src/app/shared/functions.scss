@@ -1,0 +1,6 @@
+$html-font-size: 20px;
+$page-width: 1040px;
+
+@function rem($value) {
+    @return #{$value/$html-font-size}rem;
+}
